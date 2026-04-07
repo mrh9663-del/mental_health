@@ -1,9 +1,7 @@
-
-
 ---
 layout: single
 title: "Daily Check-In"
-permalink: /checkin/
+permalink: /MenHealth/checkin/
 ---
 
 <div class="checkin-container">
@@ -35,7 +33,6 @@ permalink: /checkin/
 
 </div>
 
-<!-- Script -->
 <script src="/assets/js/mood.js"></script>
 
 <script>
