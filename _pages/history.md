@@ -1,5 +1,6 @@
 ---
 permalink: /history/
+layout: single
 title: "Mood History & Graph"
 ---
 
