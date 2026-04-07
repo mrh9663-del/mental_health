@@ -1,7 +1,6 @@
 ---
-layout: single
+permalink: /checkin/
 title: "Daily Check-In"
-permalink: /MenHealth/checkin/
 ---
 
 <div class="checkin-container">
