@@ -5,7 +5,6 @@ title: "Daily Check-In"
 
 <div class="checkin-container">
 
-<h2>Daily Mood Check-In</h2>
 <p>Take a moment to log how you feel. This is for awareness only.</p>
 
 <!-- Mood Slider -->
