@@ -13,6 +13,11 @@ title: "Daily Check-In"
 <input type="range" min="1" max="10" value="5" id="moodSlider" oninput="updateMoodValue(this.value)">
 <p id="moodValue">5</p>
 
+<h4>How best describes this feeling?</h4>
+<div id="emotionsContainer">
+  </div>
+<br>
+
 <!-- Factors -->
 <h4>What affected your mood?</h4>
 <label><input type="checkbox" value="School/Work"> School / Work</label><br>
