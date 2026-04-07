@@ -1,13 +1,13 @@
 ---
-permalink: /history/
 layout: single
+permalink: /history/
 title: "Mood History & Graph"
 ---
 
 <div class="dashboard-container">
   <h3>Your Mood Over Time</h3>
   
-  <label for="timeRange"><strong>Time Range:</strong></label>
+  <label for="timeRange"><strong>Time Range: </strong></label>
   <select id="timeRange" onchange="updateDashboard()">
     <option value="today">Today</option>
     <option value="7" selected>Past 7 Days</option>
@@ -19,17 +19,8 @@ title: "Mood History & Graph"
   <canvas id="moodChart" width="400" height="200"></canvas>
   
   <br><br>
-  <h3>Logs for this Period</h3>
-  <div id="logList"></div>
-</div>
-
-<div class="dashboard-container">
-  <h3>Your Mood Over Time</h3>
-  <canvas id="moodChart" width="400" height="200"></canvas>
   
-  <br><br>
-
-  <h3>Past Check-ins</h3>
+  <h3>Logs for this Period</h3>
   <div id="logList"></div>
 </div>
 
