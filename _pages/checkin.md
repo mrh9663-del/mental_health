@@ -1,5 +1,6 @@
 ---
 permalink: /checkin/
+layout: single
 title: "Daily Check-In"
 ---
 
@@ -31,7 +32,7 @@ title: "Daily Check-In"
 
 </div>
 
-<script src="/assets/js/mood.js"></script>
+<script src="{{ '/assets/js/mood.js' | relative_url }}"></script>
 
 <script>
 function updateMoodValue(val) {
