@@ -1,0 +1,68 @@
+<style>
+  html.dark-mode {
+    filter: invert(1) hue-rotate(180deg);
+    background-color: #111;
+  }
+  /* Keep images, canvas, and specific containers from looking deep-fried */
+  html.dark-mode img, 
+  html.dark-mode canvas,
+  html.dark-mode .void-container {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  
+  /* The Floating Button CSS */
+  #darkModeToggle {
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 9999; 
+    background: #333; 
+    color: #fff; 
+    border: none; 
+    border-radius: 50%; 
+    width: 50px; 
+    height: 50px; 
+    font-size: 24px; 
+    cursor: pointer; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+  #darkModeToggle:hover {
+    transform: scale(1.1);
+  }
+</style>
+
+<script>
+  function toggleDarkMode() {
+    const htmlEl = document.documentElement;
+    const btn = document.getElementById("darkModeToggle");
+    
+    if (htmlEl.classList.contains("dark-mode")) {
+      htmlEl.classList.remove("dark-mode");
+      btn.innerText = "🌙";
+      localStorage.setItem("theme", "light");
+    } else {
+      htmlEl.classList.add("dark-mode");
+      btn.innerText = "☀️";
+      localStorage.setItem("theme", "dark");
+    }
+  }
+
+  // Wait for the page to render, then build the button
+  document.addEventListener("DOMContentLoaded", function() {
+    const btn = document.createElement("button");
+    btn.id = "darkModeToggle";
+    btn.onclick = toggleDarkMode;
+    
+    // Check local storage so the theme stays consistent across pages
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark-mode");
+      btn.innerText = "☀️";
+    } else {
+      btn.innerText = "🌙";
+    }
+
+    // Stick the button onto the page
+    document.body.appendChild(btn);
+  });
+</script>
