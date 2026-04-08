@@ -1,32 +1,65 @@
 <style>
-  html.dark-mode {
-    filter: invert(1) hue-rotate(180deg);
-    background-color: #111;
+  /* Override the main background and text colors */
+  html.dark-mode, 
+  html.dark-mode body {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
   }
-  /* Keep images, canvas, and specific containers from looking deep-fried */
-  html.dark-mode img, 
-  html.dark-mode canvas,
-  html.dark-mode .void-container {
-    filter: invert(1) hue-rotate(180deg);
+
+  /* Fix the top navigation bar */
+  html.dark-mode .masthead {
+    background-color: #1a1a1a !important;
+    border-bottom: 1px solid #333 !important;
   }
   
+  html.dark-mode .masthead__menu-item a {
+    color: #e0e0e0 !important;
+  }
+
+  /* Fix Headings */
+  html.dark-mode .page__title, 
+  html.dark-mode h1, 
+  html.dark-mode h2, 
+  html.dark-mode h3, 
+  html.dark-mode h4, 
+  html.dark-mode strong {
+    color: #ffffff !important;
+  }
+
+  /* Fix inputs, dropdowns, and text areas */
+  html.dark-mode input[type="range"],
+  html.dark-mode input[type="checkbox"],
+  html.dark-mode select, 
+  html.dark-mode textarea {
+    background-color: #333 !important;
+    color: #fff !important;
+    border: 1px solid #555 !important;
+  }
+
+  /* Target the inline styles of the history log boxes */
+  html.dark-mode #logList > div > div {
+    background-color: #2a2a2a !important;
+    color: #e0e0e0 !important;
+  }
+
   /* The Floating Button CSS */
   #darkModeToggle {
     position: fixed; 
     bottom: 20px; 
     right: 20px; 
     z-index: 9999; 
-    background: #333; 
-    color: #fff; 
-    border: none; 
+    background: #222; 
+    color: #ffd700; 
+    border: 2px solid #444; 
     border-radius: 50%; 
     width: 50px; 
     height: 50px; 
     font-size: 24px; 
     cursor: pointer; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
   }
+  
   #darkModeToggle:hover {
     transform: scale(1.1);
   }
@@ -39,11 +72,11 @@
     
     if (htmlEl.classList.contains("dark-mode")) {
       htmlEl.classList.remove("dark-mode");
-      btn.innerText = "🌙";
+      btn.innerText = "🌙"; // Moon for light mode (click to go dark)
       localStorage.setItem("theme", "light");
     } else {
       htmlEl.classList.add("dark-mode");
-      btn.innerText = "☀️";
+      btn.innerText = "☀️"; // Sun for dark mode (click to go light)
       localStorage.setItem("theme", "dark");
     }
   }
