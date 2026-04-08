@@ -17,6 +17,7 @@ title: "The Void"
 </div>
 
 <script>
+// func to make the text fade out and disappear forever
 function sendToVoid() {
   const textEl = document.getElementById('voidText');
   const msgEl = document.getElementById('voidMessage');

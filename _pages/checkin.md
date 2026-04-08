@@ -13,8 +13,7 @@ title: "Daily Check-In"
   <p id="moodValue">5</p>
 
   <h4>Which best describes this feeling?</h4>
-  <div id="emotionsContainer">
-    </div>
+  <div id="emotionsContainer"></div>
   <br>
 
   <h4>What affected your mood?</h4>
