@@ -139,11 +139,13 @@ function getFilteredData() {
 
 // Update the chart and the HTML list below it
 function updateDashboard() {
+  const rangeEl = document.getElementById("timeRange");
+  const range = rangeEl ? rangeEl.value : "7";
   const result = getFilteredData();
   const data = result.data;
   const isSingleDay = result.isSingleDay;
   
-  // Update Chart
+  // --- 1. UPDATE THE CHART (Keeps the average/time logic) ---
   const canvas = document.getElementById("moodChart");
   if (canvas && typeof Chart !== "undefined") {
     if (myChart) myChart.destroy(); 
@@ -151,7 +153,7 @@ function updateDashboard() {
     myChart = new Chart(canvas, {
       type: "line",
       data: {
-        labels: data.map(d => d.label), // Uses Times for "Today", Dates for others
+        labels: data.map(d => d.label),
         datasets: [{
           label: isSingleDay ? "Mood (1-10)" : "Average Mood (1-10)",
           data: data.map(d => d.moodValue),
@@ -168,42 +170,43 @@ function updateDashboard() {
     });
   }
 
-  // Update Table/List
+  // --- 2. UPDATE THE LOG LIST (Shows individual logs, no averages!) ---
   const container = document.getElementById("logList");
   if (container) {
     container.innerHTML = "";
-    if (data.length === 0) {
+    
+    // We need to fetch the raw, unfiltered logs for the selected time period
+    const logs = JSON.parse(localStorage.getItem("moodLogs")) || [];
+    const now = new Date();
+    let rawLogs = logs.filter(log => {
+      const logDate = new Date(log.date);
+      if (range === "today") return logDate.toDateString() === now.toDateString();
+      if (range === "all") return true;
+      const cutoff = new Date();
+      cutoff.setDate(now.getDate() - parseInt(range));
+      return logDate >= cutoff;
+    });
+
+    // Sort logs from newest to oldest
+    rawLogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    if (rawLogs.length === 0) {
       container.innerHTML = "<p>No logs found for this timeframe.</p>";
       return;
     }
 
-    data.forEach(entry => {
+    rawLogs.forEach(log => {
       const div = document.createElement("div");
-      
-      let allNotes = [];
-      let allFactors = [];
-      let allEmotions = [];
-      
-      entry.logs.forEach(l => {
-        if (l.note) allNotes.push(l.note);
-        if (l.factors) allFactors.push(...l.factors);
-        if (l.emotions) allEmotions.push(...l.emotions);
-      });
-      
-      const uniqueFactors = [...new Set(allFactors)];
-      const uniqueEmotions = [...new Set(allEmotions)];
-
-      // Change the heading depending on if we are showing a specific time or an averaged day
-      const headerText = isSingleDay 
-        ? `${entry.label} - Mood: <strong>${entry.moodValue}</strong>` 
-        : `${entry.label} - Avg Mood: <strong>${entry.moodValue}</strong>`;
+      const d = new Date(log.date);
+      const dateString = d.toLocaleDateString();
+      const timeString = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
       div.innerHTML = `
         <div style="background: #f4f4f4; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
-          <h4 style="margin-top: 0; color: #333;">${headerText}</h4>
-          <p style="margin: 5px 0;"><strong>Felt:</strong> ${uniqueEmotions.length ? uniqueEmotions.join(", ") : "None specified"}</p>
-          <p style="margin: 5px 0;"><strong>Factors:</strong> ${uniqueFactors.length ? uniqueFactors.join(", ") : "None specified"}</p>
-          ${allNotes.length ? `<p style="margin: 5px 0;"><strong>Notes:</strong> <em>${allNotes.join(" | ")}</em></p>` : ""}
+          <h4 style="margin-top: 0; color: #333;">${dateString} at ${timeString} - Mood: <strong>${log.mood}</strong></h4>
+          ${log.emotions && log.emotions.length ? `<p style="margin: 5px 0;"><strong>Felt:</strong> ${log.emotions.join(", ")}</p>` : ""}
+          ${log.factors && log.factors.length ? `<p style="margin: 5px 0;"><strong>Factors:</strong> ${log.factors.join(", ")}</p>` : ""}
+          ${log.note ? `<p style="margin: 5px 0;"><strong>Note:</strong> <em>"${log.note}"</em></p>` : ""}
         </div>
       `;
       container.appendChild(div);
