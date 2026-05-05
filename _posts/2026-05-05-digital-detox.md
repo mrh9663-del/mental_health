@@ -1,8 +1,11 @@
 ---
-layout: single
 title: "Mini Digital Detox: Reclaiming Your Attention"
 date: 2026-05-05
-categories: [Tips, Lifestyle]
+categories: 
+ - blog
+tags:
+  - Tips
+  - Lifestyle
 ---
 
 Screen time is unavoidable, especially if you are a student or working in tech. But constant notifications and doom-scrolling absolutely wreck our attention spans and drain our energy. 

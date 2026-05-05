@@ -1,9 +1,13 @@
 ---
-layout: single
 title: "Why Tracking Your Mood Actually Helps"
 date: 2026-05-03
-categories: [Guides, Awareness]
+categories: 
+ - blog
+tags:
+  - Guides
+  - Awareness
 ---
+
 
 It’s easy to let days blur together, especially when you are stressed. You might think, *"I've been feeling awful all week,"* but is that actually true? 
 
