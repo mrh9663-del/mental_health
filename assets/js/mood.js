@@ -27,10 +27,19 @@ function updateMoodValue(val) {
   // grab the correct array of emotions from object above
   const emotions = emotionCategories[category]
   
-  // take the array of emotions turn them into html checkboxes and place them in the page
-  container.innerHTML = emotions.map(emo => 
-    `<label><input type="checkbox" class="emotion-cb" value="${emo}"> ${emo}</label><br>`
-  ).join("")
+  // take the array of emotions turn them into html checkboxes
+let htmlString = emotions.map(emo => 
+  `<label><input type="checkbox" class="emotion-cb" value="${emo}"> ${emo}</label><br>`
+).join("")
+
+// jam an extra 'other' option and a hidden text box at the very bottom
+htmlString += `
+  <label><input type="checkbox" class="emotion-cb" value="Other" onchange="toggleOtherEmotion(this)"> Other</label><br>
+  <input type="text" id="otherEmotionText" placeholder="What else are you feeling?" style="display: none; margin-top: 5px; width: 100%;">
+`
+
+// shove it all into the page
+container.innerHTML = htmlString
 }
 
 // run when user clicks save entry
@@ -53,13 +62,27 @@ function saveMood() {
   // find all checked factor boxes and put them in a list
   const factors = []
   document.querySelectorAll('.factor-cb:checked').forEach(cb => {
-    factors.push(cb.value)
+    if (cb.value === "Other") {
+      // if they checked other grab what they typed
+      const customText = document.getElementById("otherFactorText").value.trim()
+      if (customText) factors.push(customText)
+      else factors.push("Other") // fallback just in case they left it blank
+    } else {
+      factors.push(cb.value)
+    }
   })
 
   // find all checked emotion boxes and put them in a list
   const emotions = []
   document.querySelectorAll('.emotion-cb:checked').forEach(cb => {
-    emotions.push(cb.value)
+    if (cb.value === "Other") {
+      // if they checked other grab what they typed
+      const customText = document.getElementById("otherEmotionText").value.trim()
+      if (customText) emotions.push(customText)
+      else emotions.push("Other") // fallback
+    } else {
+      emotions.push(cb.value)
+    }
   })
 
   // get saved data from local storage 
@@ -249,3 +272,27 @@ function initPage() {
 
 // don't run code until the html is fully loaded and the DOM tree is built
 document.addEventListener("DOMContentLoaded", initPage)
+
+// --- hidden text box triggers ---
+
+// show or hide the extra text box for factors
+function toggleOtherFactor(checkbox) {
+  const textBox = document.getElementById("otherFactorText")
+  if (checkbox.checked) {
+    textBox.style.display = "block" // show it
+  } else {
+    textBox.style.display = "none" // hide it
+    textBox.value = "" // wipe whatever they typed if they uncheck it
+  }
+}
+
+// show or hide the extra text box for emotions
+function toggleOtherEmotion(checkbox) {
+  const textBox = document.getElementById("otherEmotionText")
+  if (checkbox.checked) {
+    textBox.style.display = "block"
+  } else {
+    textBox.style.display = "none"
+    textBox.value = "" 
+  }
+}
