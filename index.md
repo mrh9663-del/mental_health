@@ -32,7 +32,7 @@ Go back and see your past entries. This helps you notice patterns in your mood o
 Write whatever you want and let it disappear. Nothing is saved, so you can just let things out and move on.
 
 **Posts:**  
-Coming soon. This will include useful content and resources.
+A page that has resources and tips about mental health awareness and ways to make life even a bit brighter.
 
 Start with the Daily Check-in and don’t overthink it. The simpler you keep it, the more useful it becomes.
 
