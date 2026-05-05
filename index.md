@@ -3,7 +3,7 @@ layout: single
 title: "Welcome to Your Mind Space"
 permalink: /
 ---
-<script>
+
 Mental health is one of those things everyone knows matters, but most people ignore until it starts affecting everything else around them. It doesn’t usually hit all at once either, it builds up slowly. Stress, overthinking, random bad days, all of it stacks.
 
 This site is here to help with that.
@@ -36,4 +36,3 @@ Coming soon. This will include useful content and resources.
 
 Start with the Daily Check-in and don’t overthink it. The simpler you keep it, the more useful it becomes.
 
-</script>
