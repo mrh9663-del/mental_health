@@ -65,7 +65,13 @@
   }
 </style>
 
+<div id="motivationalBanner" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; background-color: #2b2b2b; color: #ffffff; text-align: center; padding: 12px; font-size: 14px; font-weight: bold; z-index: 9999; box-shadow: 0 -4px 6px rgba(0,0,0,0.3);">
+  <span id="quoteText"></span>
+  <button onclick="document.getElementById('motivationalBanner').style.display='none'" style="float: right; margin-right: 20px; background: none; border: none; color: #ffffff; font-size: 16px; cursor: pointer;">✖</button>
+</div>
+
 <script>
+  // --- DARK MODE FUNCTION ---
   function toggleDarkMode() {
     const htmlEl = document.documentElement;
     const btn = document.getElementById("darkModeToggle");
@@ -81,21 +87,45 @@
     }
   }
 
-  // Wait for the page to render, then build the button
+  // --- MOTIVATIONAL QUOTES ARRAY ---
+  const quotes = [
+    "you are doing better than you think.",
+    "one step at a time.",
+    "take a deep breath. you got this.",
+    "progress, not perfection.",
+    "your feelings are valid.",
+    "every day is a fresh start.",
+    "be kind to your mind.",
+    "small steps are still steps.",
+    "it's okay to take a break."
+  ];
+
+  // --- RUN EVERYTHING WHEN PAGE LOADS ---
   document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. Setup Dark Mode Button
     const btn = document.createElement("button");
     btn.id = "darkModeToggle";
     btn.onclick = toggleDarkMode;
     
-    // Check local storage so the theme stays consistent across pages
     if (localStorage.getItem("theme") === "dark") {
       document.documentElement.classList.add("dark-mode");
       btn.innerText = "☀️";
     } else {
       btn.innerText = "🌙";
     }
-
-    // Stick the button onto the page
     document.body.appendChild(btn);
+
+    // 2. Setup Motivational Banner
+    const dayOfMonth = new Date().getDate();
+    const quoteIndex = dayOfMonth % quotes.length;
+    
+    const banner = document.getElementById("motivationalBanner");
+    const textSpan = document.getElementById("quoteText");
+    
+    if (banner && textSpan) {
+      textSpan.innerText = quotes[quoteIndex];
+      banner.style.display = "block"; // un-hide the banner
+    }
   });
 </script>
