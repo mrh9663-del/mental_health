@@ -1,68 +1,63 @@
 <style>
-  /* Override the main background and text colors */
-  html.dark-mode, 
-  html.dark-mode body {
-    background-color: #121212 !important;
-    color: #e0e0e0 !important;
-  }
+/* --- LIGHT MODE (DEFAULT) FORCED COLORS --- */
+body, p, label, li, .page__content p {
+  color: #333333 !important;
+}
+h1, h2, h3, h4, h5, h6, .page__title {
+  color: #000000 !important;
+}
 
-  /* Fix the top navigation bar */
-  html.dark-mode .masthead {
-    background-color: #1a1a1a !important;
-    border-bottom: 1px solid #333 !important;
-  }
-  
-  html.dark-mode .masthead__menu-item a {
-    color: #e0e0e0 !important;
-  }
+/* --- DARK MODE OVERRIDES --- */
+/* Override the main background and text colors */
+html.dark-mode, 
+html.dark-mode body {
+  background-color: #121212 !important;
+  color: #e0e0e0 !important;
+}
 
-  /* Fix Headings */
-  html.dark-mode .page__title, 
-  html.dark-mode h1, 
-  html.dark-mode h2, 
-  html.dark-mode h3, 
-  html.dark-mode h4, 
-  html.dark-mode strong {
-    color: #ffffff !important;
-  }
+/* Force stubborn text tags to turn white in dark mode */
+html.dark-mode p, 
+html.dark-mode label, 
+html.dark-mode li, 
+html.dark-mode .page__content p {
+  color: #e0e0e0 !important;
+}
 
-  /* Fix inputs, dropdowns, and text areas */
-  html.dark-mode input[type="range"],
-  html.dark-mode input[type="checkbox"],
-  html.dark-mode select, 
-  html.dark-mode textarea {
-    background-color: #333 !important;
-    color: #fff !important;
-    border: 1px solid #555 !important;
-  }
+/* Fix the top navigation bar */
+html.dark-mode .masthead {
+  background-color: #1a1a1a !important;
+  border-bottom: 1px solid #333 !important;
+}
+html.dark-mode .masthead__menu-item a {
+  color: #e0e0e0 !important;
+}
 
-  /* Target the inline styles of the history log boxes */
-  html.dark-mode #logList > div > div {
-    background-color: #2a2a2a !important;
-    color: #e0e0e0 !important;
-  }
+/* Fix Headings */
+html.dark-mode .page__title,
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode h4,
+html.dark-mode strong {
+  color: #ffffff !important;
+}
 
-  /* The Floating Button CSS */
-  #darkModeToggle {
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px; 
-    z-index: 9999; 
-    background: #222; 
-    color: #ffd700; 
-    border: 2px solid #444; 
-    border-radius: 50%; 
-    width: 50px; 
-    height: 50px; 
-    font-size: 24px; 
-    cursor: pointer; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
-  }
-  
-  #darkModeToggle:hover {
-    transform: scale(1.1);
-  }
+/* Fix inputs, dropdowns, and text areas */
+html.dark-mode input[type="range"],
+html.dark-mode input[type="checkbox"],
+html.dark-mode select,
+html.dark-mode textarea,
+html.dark-mode input[type="text"] {
+  background-color: #333 !important;
+  color: #fff !important;
+  border: 1px solid #555 !important;
+}
+
+/* Target the inline styles of the history log boxes */
+html.dark-mode #logList > div > div {
+  background-color: #2a2a2a !important;
+  color: #e0e0e0 !important;
+}
 </style>
 
 <script>
