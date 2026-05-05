@@ -1,5 +1,4 @@
 ---
-layout: single
 title: "The Emergency Toolbelt: You Are Not Alone"
 date: 2026-04-22
 categories: 
