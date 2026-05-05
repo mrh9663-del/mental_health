@@ -1,10 +1,11 @@
 ---
 layout: single
 permalink: /checkin/
-title: "Daily Mood Check-In"
+title: "Daily Check-In"
 ---
 
 <div class="checkin-container">
+  <h2>Daily Mood Check-In</h2>
   <p>Take a moment to log how you feel. This is for awareness only.</p>
 
   <label for="moodSlider"><strong>Mood (1 = Very Low, 10 = Very Good)</strong></label>
@@ -23,7 +24,7 @@ title: "Daily Mood Check-In"
  
  <label><input type="checkbox" class="factor-cb" value="Other" onchange="toggleOtherFactor(this)"> Other</label><br>
  <input type="text" id="otherFactorText" placeholder="Please specify..." style="display: none; margin-top: 5px; width: 100%;">
- <br>
+<br>
 
   <h4>Optional Notes</h4>
   <textarea id="note" placeholder="Write anything you'd like..." rows="4" style="width: 100%;"></textarea>
