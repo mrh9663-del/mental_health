@@ -21,7 +21,10 @@ title: "Daily Check-In"
   <label><input type="checkbox" class="factor-cb" value="Sleep"> Sleep</label><br>
   <label><input type="checkbox" class="factor-cb" value="Social"> Social</label><br>
   <label><input type="checkbox" class="factor-cb" value="Health"> Health</label><br>
-  <label><input type="checkbox" class="factor-cb" value="Other"> Other</label><br>
+ 
+ <label><input type="checkbox" class="factor-cb" value="Other" onchange="toggleOtherFactor(this)"> Other</label><br>
+ <input type="text" id="otherFactorText" placeholder="Please specify..." style="display: none; margin-top: 5px; width: 100%;">
+ <br>
 
   <h4>Optional Notes</h4>
   <textarea id="note" placeholder="Write anything you'd like..." rows="4" style="width: 100%;"></textarea>
