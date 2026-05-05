@@ -306,6 +306,9 @@ document.addEventListener("DOMContentLoaded", function() {
   const btn = document.createElement("button");
   btn.id = "darkModeToggle";
   
+  // FORCE THE BUTTON TO FLOAT ABOVE THE BANNER
+  btn.style.cssText = "position: fixed; bottom: 60px; right: 20px; z-index: 10000; font-size: 28px; background: none; border: none; cursor: pointer; text-shadow: 0px 2px 4px rgba(0,0,0,0.3);";
+  
   function toggleDarkMode() {
     const htmlEl = document.documentElement;
     if (htmlEl.classList.contains("dark-mode")) {
@@ -347,9 +350,8 @@ document.addEventListener("DOMContentLoaded", function() {
     "it's okay to take a break."
   ];
 
-  // Pick quote based on the day of the month
-  const dayOfMonth = new Date().getDate();
-  const quoteIndex = dayOfMonth % quotes.length;
+  // PICK A RANDOM QUOTE ON EVERY REFRESH
+  const randomIndex = Math.floor(Math.random() * quotes.length);
   
   // Build the banner container
   const bannerDiv = document.createElement("div");
@@ -358,7 +360,7 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Build the text
   const textSpan = document.createElement("span");
-  textSpan.innerText = quotes[quoteIndex];
+  textSpan.innerText = quotes[randomIndex]; // Uses the random number here
   
   // Build the close button
   const closeBtn = document.createElement("button");
