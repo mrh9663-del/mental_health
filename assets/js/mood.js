@@ -296,4 +296,3 @@ function toggleOtherEmotion(checkbox) {
     textBox.value = "" 
   }
 }
-
