@@ -1,11 +1,10 @@
 ---
 layout: single
 permalink: /checkin/
-title: "Daily Check-In"
+title: "Daily Mood Check-In"
 ---
 
 <div class="checkin-container">
-  <h2>Daily Mood Check-In</h2>
   <p>Take a moment to log how you feel. This is for awareness only.</p>
 
   <label for="moodSlider"><strong>Mood (1 = Very Low, 10 = Very Good)</strong></label>
